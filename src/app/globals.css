@@ -1,38 +1,83 @@
 @import "tailwindcss";
 
+/* Class-based dark mode (next-themes sets .dark on <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Warm paper / studio wall — light; ink-warm — dark (Maxim Siebert–adjacent minimal) */
 :root {
-  --background: #fafafa;
-  --foreground: #141414;
+  --background: #f0ebe3;
+  --foreground: #171615;
+  --background-glow: color-mix(in srgb, var(--foreground) 5%, transparent);
+  --grain-opacity: 0.42;
   color-scheme: light;
+}
+
+.dark {
+  --background: #121110;
+  --foreground: #ebe8e4;
+  --background-glow: color-mix(in srgb, var(--foreground) 8%, transparent);
+  --grain-opacity: 0.22;
+  color-scheme: dark;
+}
+
+/* Soft top wash + fixed film grain (non-interactive) */
+html {
+  min-height: 100%;
+  background-color: var(--background);
+  background-image: radial-gradient(
+    ellipse 100% 55% at 50% -8%,
+    var(--background-glow),
+    transparent 58%
+  );
+  background-attachment: fixed;
+  -webkit-tap-highlight-color: color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)' opacity='.55'/%3E%3C/svg%3E");
+  background-size: 280px 280px;
+}
+
+html.dark::before {
+  mix-blend-mode: soft-light;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  /* Best default for this site: Geist Sans (body) + Geist Mono (dates, kbd, section n, dense UI) — one family, readable at small sizes. */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    color-scheme: dark;
-  }
-}
-
-html {
-  -webkit-tap-highlight-color: color-mix(in srgb, var(--foreground) 12%, transparent);
+  /* PP Fraktion Mono is paid (Pangram Pangram). Until licensed, match Matt-style `font-fraktion-mono` with Geist Mono. See fonts/fraktion/README.txt */
+  --font-fraktion-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
+  position: relative;
+  z-index: 1;
+  background: transparent;
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   touch-action: manipulation;
 }
 
 @layer utilities {
+  /* Single-row nav: scroll without visible scrollbar flash */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   .sr-only {
     position: absolute;
     width: 1px;

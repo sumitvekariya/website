@@ -1,10 +1,46 @@
 "use client";
 
-import { useCallback, useEffect, useId, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useState,
+  type ReactNode,
+} from "react";
+import Link from "next/link";
+import { NavIcon, PaletteLinkIcon } from "@/components/NavIcon";
 import { site } from "@/content/site";
 
+function navPaletteSections(): Array<{
+  label: string;
+  href: string;
+  kind: "section";
+}> {
+  const out: Array<{ label: string; href: string; kind: "section" }> = [];
+  for (const item of site.nav) {
+    out.push({ label: item.label, href: item.href, kind: "section" });
+    if ("children" in item && item.children.length > 0) {
+      for (const c of item.children) {
+        out.push({
+          label: `${item.label} — ${c.label}`,
+          href: c.href,
+          kind: "section",
+        });
+      }
+    }
+  }
+  return out;
+}
+
+const writingPaletteItems = site.writing.map((w) => ({
+  label: `Writing — ${w.title}`,
+  href: w.href,
+  kind: "writing" as const,
+}));
+
 const paletteItems = [
-  ...site.nav.map((item) => ({ label: item.label, href: item.href, kind: "section" as const })),
+  ...navPaletteSections(),
+  ...writingPaletteItems,
   ...site.links.map((l) => ({ label: l.label, href: l.href, kind: "link" as const })),
   {
     label: "Email",
@@ -20,6 +56,35 @@ const paletteItems = [
 
 const linkFocusClass =
   "rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-foreground/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+
+function PaletteLink({
+  href,
+  className,
+  onClick,
+  children,
+}: {
+  href: string;
+  className: string;
+  onClick: () => void;
+  children: ReactNode;
+}) {
+  const external =
+    href.startsWith("http://") ||
+    href.startsWith("https://") ||
+    href.startsWith("mailto:");
+  if (external) {
+    return (
+      <a href={href} className={className} onClick={onClick}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className={className} onClick={onClick}>
+      {children}
+    </Link>
+  );
+}
 
 export function CommandMenu() {
   const [open, setOpen] = useState(false);
@@ -85,16 +150,23 @@ export function CommandMenu() {
           <ul className="max-h-[min(52vh,24rem)] overflow-y-auto overscroll-y-contain py-1">
             {paletteItems.map((item) => (
               <li key={`${item.kind}-${item.href}-${item.label}`}>
-                <a
+                <PaletteLink
                   href={item.href}
-                  className={`flex min-h-11 items-center justify-between gap-3 px-3 py-2 text-sm hover:bg-foreground/5 ${linkFocusClass}`}
+                  className={`group flex min-h-11 items-center justify-between gap-3 px-3 py-2 text-sm hover:bg-foreground/5 ${linkFocusClass}`}
                   onClick={close}
                 >
-                  <span>{item.label}</span>
+                  <span className="flex min-w-0 items-center gap-2.5">
+                    {item.kind === "section" ? (
+                      <NavIcon href={item.href} size="md" />
+                    ) : (
+                      <PaletteLinkIcon href={item.href} size="md" />
+                    )}
+                    <span className="truncate">{item.label}</span>
+                  </span>
                   <span className="text-[0.65rem] uppercase tracking-wider text-foreground/40">
                     {item.kind}
                   </span>
-                </a>
+                </PaletteLink>
               </li>
             ))}
           </ul>

@@ -35,7 +35,33 @@ npm run start    # not used with static export; use `npx serve out` or deploy `o
 
 Replace `public/Sumit_Vekariya_Resume.pdf` whenever you update your canonical resume (same file you send to employers).
 
+**Which PDF for which role:** Use a **Principia-style** PDF for identity / verifiable-systems / crypto-research roles; use a **ProbAI-style** export (from `Sumit_Vekariya_ProbAI_CV.md` or equivalent) for AI safety / ML evaluation roles. Keep wording aligned with `src/content/site.ts` so the site and the file you attach never disagree. Details: `.agents/product-marketing-context.md`.
+
 ## Deploy
 
-- **Vercel**: import repo; Next.js preset works with or without `output: "export"`.
-- **Static hosting**: `npm run build` then upload the `out/` directory (configured in `next.config.ts`).
+This app uses **`output: "export"`** (`next.config.ts`). Vercel runs `next build` and serves the generated **`out/`** static output—no extra config required beyond `vercel.json` (framework + install/build commands).
+
+### Vercel (GitHub — recommended)
+
+1. Put the **`site/`** folder in a Git repo and push to GitHub (this folder can be the repo root, or use **Root Directory = `site`** if the repo is the parent `Resume` folder).
+2. In [Vercel](https://vercel.com/new): **Add New… → Project** → import that repository.
+3. **Framework Preset**: Next.js (auto-detected). **Node.js**: 20.x (matches `.nvmrc`).
+4. **Environment variables**: none required for the default build.
+5. Deploy. Production URL will look like `https://<project>.vercel.app`; add a custom domain under **Project → Settings → Domains** if you like.
+
+### Vercel (CLI, no Git)
+
+From this directory:
+
+```bash
+npm ci
+npx vercel login
+npx vercel        # preview
+npx vercel --prod # production
+```
+
+Follow the prompts to link or create a project.
+
+### Other static hosts
+
+`npm run build` then upload the **`out/`** directory to any static host (Cloudflare Pages, Netlify, S3, etc.).

@@ -3,6 +3,7 @@ import { join } from "path";
 import { Section } from "@/components/Section";
 import { SiteHeader } from "@/components/SiteHeader";
 import { CommandMenu } from "@/components/CommandMenu";
+import { WritingFilter } from "@/components/WritingFilter";
 import { site } from "@/content/site";
 
 const resumeOnDisk = existsSync(
@@ -15,28 +16,39 @@ export default function Home() {
       <SiteHeader />
       <CommandMenu />
       <main id="main" className="mx-auto max-w-2xl px-[max(1.25rem,env(safe-area-inset-left))] pb-[max(6rem,env(safe-area-inset-bottom))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-10">
-        <section id="intro" className="scroll-mt-28 space-y-5">
+        <section id="intro" className="scroll-mt-28 space-y-4">
           <p className="font-mono text-[0.8125rem] tabular-nums text-foreground/45">
             {site.location}
           </p>
-          <h1 className="text-[1.65rem] font-medium leading-snug tracking-tight text-pretty sm:text-[1.85rem]">
-            {site.name}
-            <span className="text-foreground/50"> — </span>
-            <span className="text-foreground/85">{site.role}</span>
+          <h1 className="space-y-1.5 text-pretty">
+            <span className="block text-[1.65rem] font-medium leading-tight tracking-tight sm:text-[1.75rem]">
+              {site.name}
+            </span>
+            <span className="block text-[1rem] font-normal leading-snug text-foreground/65 sm:text-[1.05rem]">
+              {site.role}
+            </span>
+            <a
+              href={site.handleHref}
+              className="mt-1 inline-block font-mono text-[0.8125rem] tracking-tight text-foreground/45 underline decoration-foreground/20 underline-offset-4 transition-colors hover:text-foreground/70 hover:decoration-foreground/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+              rel="me noreferrer"
+              target="_blank"
+            >
+              @{site.handle}
+            </a>
           </h1>
-          <p className="max-w-prose text-[0.95rem] leading-relaxed text-foreground/80">
-            {site.summary}
+          <p className="max-w-prose text-[0.9375rem] leading-relaxed text-foreground/80">
+            {site.introLead}
           </p>
-          <p className="max-w-prose text-[0.875rem] leading-relaxed text-foreground/55">
-            {site.focusAreas}
+          <p className="max-w-prose text-[0.9rem] leading-relaxed text-foreground/65">
+            {site.introDirection}
           </p>
-          <p className="max-w-prose text-[0.875rem] leading-relaxed text-foreground/55">
-            {site.personalNote}
+          <p className="max-w-prose text-[0.8125rem] leading-relaxed text-foreground/50">
+            {site.introAside}
           </p>
-          <p className="pt-2 font-mono text-[0.75rem] text-foreground/40">
-            {site.keyboardHint}{" "}
-            <kbd className="rounded border border-foreground/20 px-1">⌘ K</kbd> /{" "}
-            <kbd className="rounded border border-foreground/20 px-1">Ctrl K</kbd>
+          <p className="pt-1 font-mono text-[0.7rem] text-foreground/40">
+            <kbd className="rounded border border-foreground/20 px-1 py-px">⌘ K</kbd> /{" "}
+            <kbd className="rounded border border-foreground/20 px-1 py-px">Ctrl K</kbd>
+            <span className="ml-1.5">— all sections</span>
           </p>
         </section>
 
@@ -103,27 +115,88 @@ export default function Home() {
             </ul>
           </Section>
 
-          <Section id="writing" n="03" title="Writing">
-            <ul className="space-y-4">
-              {site.writing.map((w) => (
-                <li key={w.title}>
-                  <a
-                    href={w.href}
-                    className="group flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between"
-                  >
-                    <span className="text-[0.9rem] font-medium text-foreground underline decoration-foreground/20 underline-offset-4 transition-colors group-hover:decoration-foreground/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm">
-                      {w.title}
+          <Section id="ai-research" n="03" title="AI & research">
+            <p className="max-w-prose text-[0.9rem] leading-relaxed text-foreground/75">
+              {site.aiResearch.lead}
+            </p>
+            <p className="mt-5 text-[0.8125rem] font-medium text-foreground/80">
+              Research themes
+            </p>
+            <ul className="mt-2 list-disc space-y-2 pl-5 text-[0.9rem] leading-relaxed text-foreground/75">
+              {site.aiResearch.themes.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ul>
+            <p className="mt-5 text-[0.8125rem] font-medium text-foreground/80">
+              What I’m doing now
+            </p>
+            <ul className="mt-2 list-disc space-y-2 pl-5 text-[0.9rem] leading-relaxed text-foreground/75">
+              {site.aiResearch.efforts.map((e) => (
+                <li key={e}>{e}</li>
+              ))}
+            </ul>
+            <p className="mt-5 text-[0.8125rem] font-medium text-foreground/80">
+              AI-adjacent projects
+            </p>
+            <ul className="mt-3 space-y-6">
+              {site.aiResearch.adjacentProjects.map((p) => {
+                const href =
+                  "href" in p && typeof p.href === "string" ? p.href : undefined;
+                return (
+                  <li key={p.name}>
+                    <div className="flex flex-col gap-1">
+                      {href !== undefined ? (
+                        <a
+                          href={href}
+                          className="w-fit font-medium text-foreground underline decoration-foreground/25 underline-offset-4 hover:decoration-foreground/55 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+                        >
+                          {p.name}
+                        </a>
+                      ) : (
+                        <span className="font-medium">{p.name}</span>
+                      )}
+                      <p className="max-w-prose text-[0.9rem] leading-relaxed text-foreground/75">
+                        {p.note}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </Section>
+
+          <Section id="writing" n="04" title="Writing">
+            <p className="mb-1 max-w-prose text-[0.8125rem] leading-relaxed text-foreground/55">
+              Filter by topic — each piece can appear under more than one tag.
+            </p>
+            <WritingFilter items={site.writing} tagDefs={site.writingTagDefs} />
+          </Section>
+
+          <Section id="residencies" n="05" title="Residencies">
+            <ul className="space-y-8">
+              {site.residencies.map((r) => (
+                <li key={r.name}>
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                    <a
+                      href={r.href}
+                      className="font-medium text-foreground underline decoration-foreground/25 underline-offset-4 transition-colors hover:decoration-foreground/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+                    >
+                      {r.name}
+                    </a>
+                    <span className="shrink-0 font-mono text-[0.8125rem] tabular-nums text-foreground/45">
+                      {r.placeTime}
                     </span>
-                    <span className="shrink-0 font-mono text-[0.8125rem] tabular-nums text-foreground/40">
-                      {w.year}
-                    </span>
-                  </a>
+                  </div>
+                  <p className="mt-1 text-[0.8125rem] text-foreground/50">{r.context}</p>
+                  <p className="mt-2 max-w-prose text-[0.9rem] leading-relaxed text-foreground/75">
+                    {r.blurb}
+                  </p>
                 </li>
               ))}
             </ul>
           </Section>
 
-          <Section id="open-source" n="04" title="Open source">
+          <Section id="open-source" n="06" title="Open source">
             <p className="max-w-prose text-[0.9rem] leading-relaxed text-foreground/75">
               {site.oss.intro}
             </p>
@@ -146,7 +219,7 @@ export default function Home() {
             </p>
           </Section>
 
-          <Section id="skills" n="05" title="Technical skills">
+          <Section id="skills" n="07" title="Technical skills">
             <ul className="list-none space-y-2.5 text-[0.9rem] leading-relaxed text-foreground/75">
               {site.skills.map((s) => (
                 <li key={s}>{s}</li>
@@ -154,7 +227,7 @@ export default function Home() {
             </ul>
           </Section>
 
-          <Section id="education" n="06" title="Education & certifications">
+          <Section id="education" n="08" title="Education & certifications">
             <ul className="list-disc space-y-2 pl-5 text-[0.9rem] text-foreground/75">
               {site.education.map((e) => (
                 <li key={e}>{e}</li>
@@ -172,7 +245,7 @@ export default function Home() {
             </div>
           </Section>
 
-          <Section id="contact" n="07" title="Contact">
+          <Section id="contact" n="09" title="Contact">
             <p className="text-[0.9rem] text-foreground/75">
               <a
                 href={`mailto:${site.email}`}
