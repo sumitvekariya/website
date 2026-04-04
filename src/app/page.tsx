@@ -34,10 +34,9 @@ export default function Home() {
             {site.personalNote}
           </p>
           <p className="pt-2 font-mono text-[0.75rem] text-foreground/40">
-            Press{" "}
+            {site.keyboardHint}{" "}
             <kbd className="rounded border border-foreground/20 px-1">⌘ K</kbd> /{" "}
-            <kbd className="rounded border border-foreground/20 px-1">Ctrl K</kbd>{" "}
-            for links & sections
+            <kbd className="rounded border border-foreground/20 px-1">Ctrl K</kbd>
           </p>
         </section>
 
@@ -147,7 +146,15 @@ export default function Home() {
             </p>
           </Section>
 
-          <Section id="education" n="05" title="Education & certifications">
+          <Section id="skills" n="05" title="Technical skills">
+            <ul className="list-none space-y-2.5 text-[0.9rem] leading-relaxed text-foreground/75">
+              {site.skills.map((s) => (
+                <li key={s}>{s}</li>
+              ))}
+            </ul>
+          </Section>
+
+          <Section id="education" n="06" title="Education & certifications">
             <ul className="list-disc space-y-2 pl-5 text-[0.9rem] text-foreground/75">
               {site.education.map((e) => (
                 <li key={e}>{e}</li>
@@ -163,19 +170,9 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="pt-6">
-              <p className="text-[0.8125rem] font-medium text-foreground/80">
-                Technical skills
-              </p>
-              <ul className="mt-3 space-y-1.5 text-[0.85rem] leading-relaxed text-foreground/60">
-                {site.skills.map((s) => (
-                  <li key={s}>{s}</li>
-                ))}
-              </ul>
-            </div>
           </Section>
 
-          <Section id="contact" n="06" title="Contact">
+          <Section id="contact" n="07" title="Contact">
             <p className="text-[0.9rem] text-foreground/75">
               <a
                 href={`mailto:${site.email}`}

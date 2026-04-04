@@ -2,6 +2,12 @@
 
 Minimal single-page site. Content lives in `src/content/site.ts` and should stay aligned with `Sumit_Vekariya_Resume.pdf` in `public/`.
 
+## Copy & voice
+
+- Source of truth for on-page text: `src/content/site.ts` (keep aligned with `public/Sumit_Vekariya_Resume.pdf`).
+- Context for editors/agents: `.agents/product-marketing-context.md`.
+- For rewrites, use the **copywriting** skill from [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) (installed under the parent `Resume/.agents/skills/` when you run `npx skills add coreyhaines31/marketingskills` from the Resume folder).
+
 ## Requirements
 
 - **Node.js** 20.9+ (see `.nvmrc`; use `nvm use` if you use nvm)
