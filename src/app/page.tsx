@@ -1,10 +1,17 @@
 import { existsSync } from "fs";
 import { join } from "path";
+import type { Metadata } from "next";
 import { Section } from "@/components/Section";
 import { SiteHeader } from "@/components/SiteHeader";
 import { CommandMenu } from "@/components/CommandMenu";
 import { WritingFilter } from "@/components/WritingFilter";
 import { site } from "@/content/site";
+import { getSiteUrl } from "@/lib/site-url";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { url: getSiteUrl() },
+};
 
 const resumeOnDisk = existsSync(
   join(process.cwd(), "public", "Sumit_Vekariya_Resume.pdf"),

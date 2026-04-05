@@ -4,6 +4,7 @@ import "./globals.css";
 import { SkipLink } from "@/components/SkipLink";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { site } from "@/content/site";
+import { getSiteUrl } from "@/lib/site-url";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +16,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = getSiteUrl();
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: site.name,
     template: `%s — ${site.name}`,
@@ -36,8 +40,37 @@ export const metadata: Metadata = {
     title: site.name,
     description: site.metaDescription,
     type: "website",
+    url: siteUrl,
+    siteName: site.name,
+    locale: "en_IN",
+    images: [{ url: "/apple-touch-icon.png", alt: site.name }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.name,
+    description: site.metaDescription,
+    images: ["/apple-touch-icon.png"],
   },
 };
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      name: site.name,
+      url: siteUrl,
+      description: site.metaDescription,
+    },
+    {
+      "@type": "Person",
+      name: site.name,
+      url: siteUrl,
+      jobTitle: site.role,
+      sameAs: site.links.map((l) => l.href),
+    },
+  ],
+} as const;
 
 export default function RootLayout({
   children,
@@ -51,6 +84,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full bg-transparent text-foreground">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ThemeProvider>
           <SkipLink />
           {children}

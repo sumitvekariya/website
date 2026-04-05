@@ -4,13 +4,27 @@ import { CommandMenu } from "@/components/CommandMenu";
 import { Section } from "@/components/Section";
 import { SiteHeader } from "@/components/SiteHeader";
 import { site } from "@/content/site";
+import { getSiteUrl } from "@/lib/site-url";
 
 const navFocus =
   "rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-foreground/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
+const lifeDescription = site.life.intro.slice(0, 155);
+
 export const metadata: Metadata = {
   title: "Life",
-  description: site.life.intro.slice(0, 155),
+  description: lifeDescription,
+  alternates: { canonical: "/life" },
+  openGraph: {
+    title: `Life — ${site.name}`,
+    description: lifeDescription,
+    url: `${getSiteUrl()}/life`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Life — ${site.name}`,
+    description: lifeDescription,
+  },
 };
 
 export default function LifePage() {
