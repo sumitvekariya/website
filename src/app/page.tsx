@@ -22,13 +22,13 @@ export default function Home() {
     <>
       <SiteHeader />
       <CommandMenu />
-      <main id="main" className="mx-auto max-w-2xl px-[max(1.25rem,env(safe-area-inset-left))] pb-[max(6rem,env(safe-area-inset-bottom))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-10">
-        <section id="intro" className="scroll-mt-28 space-y-4">
+      <main id="main" className="mx-auto max-w-3xl px-[max(1.25rem,env(safe-area-inset-left))] pb-[max(6rem,env(safe-area-inset-bottom))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-10 sm:pt-12">
+        <section id="intro" className="scroll-mt-28 space-y-5">
           <p className="font-mono text-[0.8125rem] tabular-nums text-foreground/45">
             {site.location}
           </p>
           <h1 className="space-y-1.5 text-pretty">
-            <span className="block text-[1.65rem] font-medium leading-tight tracking-tight sm:text-[1.75rem]">
+            <span className="font-display block text-[1.7rem] font-medium leading-[1.15] tracking-[-0.02em] sm:text-[2rem]">
               {site.name}
             </span>
             <span className="block text-[1rem] font-normal leading-snug text-foreground/65 sm:text-[1.05rem]">

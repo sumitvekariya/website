@@ -3,20 +3,24 @@
 /* Class-based dark mode (next-themes sets .dark on <html>) */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Warm paper / studio wall — light; ink-warm — dark (Maxim Siebert–adjacent minimal) */
+/* Light: page = white (Tailwind bg-white); cards use a hair off-white so borders/shadows read. */
 :root {
-  --background: #f0ebe3;
-  --foreground: #171615;
-  --background-glow: color-mix(in srgb, var(--foreground) 5%, transparent);
-  --grain-opacity: 0.42;
+  --background: rgb(255 255 255);
+  --foreground: #0a0a0a;
+  --surface: #ffffff;
+  --surface-border: color-mix(in srgb, var(--foreground) 7%, transparent);
+  --background-glow: color-mix(in srgb, var(--foreground) 3%, transparent);
+  --grain-opacity: 0.22;
   color-scheme: light;
 }
 
 .dark {
-  --background: #121110;
-  --foreground: #ebe8e4;
-  --background-glow: color-mix(in srgb, var(--foreground) 8%, transparent);
-  --grain-opacity: 0.22;
+  --background: #0a0a0a;
+  --foreground: #f2f2f0;
+  --surface: #141414;
+  --surface-border: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --background-glow: color-mix(in srgb, var(--foreground) 6%, transparent);
+  --grain-opacity: 0.16;
   color-scheme: dark;
 }
 
@@ -52,10 +56,11 @@ html.dark::before {
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  /* Best default for this site: Geist Sans (body) + Geist Mono (dates, kbd, section n, dense UI) — one family, readable at small sizes. */
-  --font-sans: var(--font-geist-sans);
+  --color-surface: var(--surface);
+  /* Inter body + Geist display (Refined.so-style stack). Geist Mono for meta, dates, kbd. */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
-  /* PP Fraktion Mono is paid (Pangram Pangram). Until licensed, match Matt-style `font-fraktion-mono` with Geist Mono. See fonts/fraktion/README.txt */
   --font-fraktion-mono: var(--font-geist-mono);
 }
 
@@ -64,7 +69,7 @@ body {
   z-index: 1;
   background: transparent;
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   touch-action: manipulation;
 }
 

@@ -36,7 +36,7 @@ export default function LifePage() {
       <CommandMenu />
       <main
         id="main"
-        className="mx-auto max-w-2xl px-[max(1.25rem,env(safe-area-inset-left))] pb-[max(6rem,env(safe-area-inset-bottom))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-10"
+        className="mx-auto max-w-3xl px-[max(1.25rem,env(safe-area-inset-left))] pb-[max(6rem,env(safe-area-inset-bottom))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-10 sm:pt-12"
       >
         <header className="space-y-3">
           <p className="font-mono text-[0.8125rem] tabular-nums text-foreground/45">
@@ -49,7 +49,7 @@ export default function LifePage() {
             <span className="text-foreground/35"> · </span>
             {life.title}
           </p>
-          <h1 className="text-[1.65rem] font-medium leading-tight tracking-tight text-pretty sm:text-[1.75rem]">
+          <h1 className="font-display text-[1.7rem] font-medium leading-[1.15] tracking-[-0.02em] text-pretty sm:text-[2rem]">
             {life.title}
           </h1>
           <p className="max-w-prose text-[0.9375rem] leading-relaxed text-foreground/75">

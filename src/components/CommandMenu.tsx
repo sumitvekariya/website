@@ -128,7 +128,7 @@ export function CommandMenu() {
         role="presentation"
       >
         <div
-          className="pointer-events-auto flex max-h-[min(60vh,28rem)] w-full max-w-md flex-col overflow-hidden rounded-lg border border-foreground/15 bg-background shadow-lg"
+          className="pointer-events-auto flex max-h-[min(60vh,28rem)] w-full max-w-md flex-col overflow-hidden rounded-xl border border-foreground/12 bg-surface shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.45)]"
           role="dialog"
           aria-modal="true"
           aria-labelledby={titleId}

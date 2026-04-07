@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { SkipLink } from "@/components/SkipLink";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { site } from "@/content/site";
 import { getSiteUrl } from "@/lib/site-url";
+
+/** Inter for long-form body (Refined-style pairing); Geist for display / UI density. */
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -81,7 +88,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+      className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full bg-transparent text-foreground">
         <script

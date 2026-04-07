@@ -20,8 +20,8 @@ export function Section({ id, n, title, children }: SectionProps) {
         >
           {n}
         </span>
-        <div className="min-w-0 flex-1 space-y-6">
-          <h2 className="text-[1.05rem] font-medium tracking-tight text-pretty">
+        <div className="min-w-0 flex-1 space-y-6 rounded-2xl border border-foreground/10 bg-surface px-5 py-6 shadow-[0_1px_0_rgba(0,0,0,0.05),0_2px_8px_rgba(0,0,0,0.04)] sm:px-7 sm:py-8 dark:border-foreground/[0.12] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset]">
+          <h2 className="font-display text-[1.05rem] font-medium tracking-tight text-pretty">
             {title}
           </h2>
           {children}

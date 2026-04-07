@@ -10,10 +10,10 @@ const navFocus =
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-foreground/10 bg-background/85 backdrop-blur-md supports-[backdrop-filter]:bg-background/70">
-      <div className="mx-auto flex max-w-2xl items-center gap-3 px-[max(1.25rem,env(safe-area-inset-left))] py-2.5 pr-[max(1.25rem,env(safe-area-inset-right))]">
+      <div className="mx-auto flex max-w-3xl items-center gap-3 px-[max(1.25rem,env(safe-area-inset-left))] py-2.5 pr-[max(1.25rem,env(safe-area-inset-right))]">
         <Link
           href="/#intro"
-          className={`shrink-0 text-sm font-medium tracking-tight text-foreground hover:opacity-80 ${navFocus}`}
+          className={`font-display shrink-0 text-sm font-medium tracking-tight text-foreground hover:opacity-80 ${navFocus}`}
         >
           {site.name.split(" ")[0]}
           <span className="text-foreground/50">.</span>
