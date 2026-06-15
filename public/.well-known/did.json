@@ -1,0 +1,24 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1"
+  ],
+  "id": "did:web:sarkazein.xyz",
+  "verificationMethod": [
+    {
+      "id": "did:web:sarkazein.xyz#key-1",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:web:sarkazein.xyz",
+      "publicKeyHex": "cc76c975e5d2dbbd9f3cac93ec816ae3d5420e51769dbd9c1c6ae74e5690f3f1"
+    },
+    {
+      "id": "did:web:sarkazein.xyz#key-2",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:web:sarkazein.xyz",
+      "publicKeyHex": "921662cc40c46136bfa9d6016b86c5b6e8d20e9af7bd27a2a0d89e7f9640a8c2"
+    }
+  ],
+  "authentication": [
+    "did:web:sarkazein.xyz#key-1",
+    "did:web:sarkazein.xyz#key-2"
+  ]
+}
