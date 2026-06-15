@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Path-only mark: SVG favicons often skip text rendering. -->
+  <style>
+    .s {
+      stroke: #171717;
+      stroke-width: 2.35;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .dot {
+      fill: #171717;
+    }
+    @media (prefers-color-scheme: dark) {
+      .s {
+        stroke: #fafafa;
+      }
+      .dot {
+        fill: #fafafa;
+      }
+    }
+  </style>
+  <path
+    class="s"
+    d="M21.5 8.2c0-3-2.8-5-6.8-5-4.3 0-7 2.4-7 6 0 2.6 1.8 4.5 5.4 5.5l3.2.9c4.2 1.2 6.4 3.4 6.4 7.2 0 4.2-3.6 7.2-8.8 7.2-5.4 0-9-2.9-9-7.5"
+  />
+  <circle class="dot" cx="24.5" cy="23.5" r="2.35" />
+</svg>
