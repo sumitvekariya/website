@@ -9,23 +9,14 @@
       "id": "did:web:sarkazein.xyz#key-1",
       "type": "Ed25519VerificationKey2020",
       "controller": "did:web:sarkazein.xyz",
-      "publicKeyMultibase": "z6Mkt54K9zJLErf4HuZ33UeNV4qn5FgqoVuVewxMkjf2LgyA",
-      "publicKeyHex": "ca5392fbcca3a63e0b225ddb01fe1d313ceb411ba63f36091955dc44512694fd"
-    },
-    {
-      "id": "did:web:sarkazein.xyz#key-2",
-      "type": "Ed25519VerificationKey2020",
-      "controller": "did:web:sarkazein.xyz",
-      "publicKeyMultibase": "z6Mkr2GWpsaewNe8YEDYrDgeXsCpMsAUqEZYqoF2yS6gqTrX",
-      "publicKeyHex": "abe540fb1951c4fa0d37c5bb3b2827ba218368881d5dc8e8b91b1c1dcee72f30"
+      "publicKeyMultibase": "z6MkqirVZm7hP5GLmCwmkyuv6dJVPb6aLtTbBGMnBn4oP67B",
+      "publicKeyHex": "a76f37f740e859aa9ad1496850924994ea26da470950dc9b330712e083537f8a"
     }
   ],
   "authentication": [
-    "did:web:sarkazein.xyz#key-1",
-    "did:web:sarkazein.xyz#key-2"
+    "did:web:sarkazein.xyz#key-1"
   ],
   "assertionMethod": [
-    "did:web:sarkazein.xyz#key-1",
-    "did:web:sarkazein.xyz#key-2"
+    "did:web:sarkazein.xyz#key-1"
   ]
 }
