@@ -10,6 +10,13 @@
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Content-Type", "value": "application/json" }
       ]
+    },
+    {
+      "source": "/.well-known/did.jsonl",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Content-Type", "value": "application/jsonl" }
+      ]
     }
   ]
 }
