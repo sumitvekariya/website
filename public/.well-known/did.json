@@ -9,8 +9,8 @@
       "id": "did:web:sarkazein.xyz#key-1",
       "type": "Ed25519VerificationKey2020",
       "controller": "did:web:sarkazein.xyz",
-      "publicKeyMultibase": "z6MkqirVZm7hP5GLmCwmkyuv6dJVPb6aLtTbBGMnBn4oP67B",
-      "publicKeyHex": "a76f37f740e859aa9ad1496850924994ea26da470950dc9b330712e083537f8a"
+      "publicKeyMultibase": "z6MkuE5po2VhQCDD9MZZ1dDE91iYivqoeUyGno7pvZ35WUz9",
+      "publicKeyHex": "db7f3265e3b1edde612903a2abff8181c025c03e21cbcf105d62ef6fec691546"
     }
   ],
   "authentication": [
