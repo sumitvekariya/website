@@ -15,7 +15,7 @@
       "source": "/.well-known/did.jsonl",
       "headers": [
         { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Content-Type", "value": "application/jsonl" }
+        { "key": "Content-Type", "value": "text/jsonl" }
       ]
     }
   ]
