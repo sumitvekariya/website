@@ -17,6 +17,13 @@
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Content-Type", "value": "text/jsonl" }
       ]
+    },
+    {
+      "source": "/webvh-e2e-20260904/did.jsonl",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Content-Type", "value": "text/jsonl" }
+      ]
     }
   ]
 }
