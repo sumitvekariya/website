@@ -45,6 +45,13 @@
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Content-Type", "value": "application/json" }
       ]
+    },
+    {
+      "source": "/legacy-continuity/did.jsonl",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Content-Type", "value": "text/jsonl" }
+      ]
     }
   ]
 }
