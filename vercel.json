@@ -24,6 +24,20 @@
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Content-Type", "value": "text/jsonl" }
       ]
+    },
+    {
+      "source": "/fresh-browser/did.jsonl",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Content-Type", "value": "text/jsonl" }
+      ]
+    },
+    {
+      "source": "/legacy-browser/did.jsonl",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Content-Type", "value": "text/jsonl" }
+      ]
     }
   ]
 }
