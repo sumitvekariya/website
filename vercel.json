@@ -66,6 +66,13 @@
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Content-Type", "value": "text/jsonl" }
       ]
+    },
+    {
+      "source": "/pablo-fresh-20260907/did.jsonl",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Content-Type", "value": "text/jsonl" }
+      ]
     }
   ]
 }
