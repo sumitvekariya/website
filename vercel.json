@@ -73,6 +73,13 @@
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Content-Type", "value": "text/jsonl" }
       ]
+    },
+    {
+      "source": "/pr81-revocation-20260909/did.jsonl",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Content-Type", "value": "text/jsonl" }
+      ]
     }
   ]
 }
