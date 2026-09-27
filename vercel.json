@@ -54,6 +54,13 @@
       ]
     },
     {
+      "source": "/legacy-prod-0927/did.jsonl",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Content-Type", "value": "text/jsonl" }
+      ]
+    },
+    {
       "source": "/legacy-continuity/did.jsonl",
       "headers": [
         { "key": "Access-Control-Allow-Origin", "value": "*" },
